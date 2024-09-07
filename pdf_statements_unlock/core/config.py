@@ -38,6 +38,21 @@ class GlobalConfig(BaseSettings):
 
     STANDARD_CHARTERED_PDF_PASSWORD: str
 
+    ICICI_CARD_1_NUMBER: str
+    ICICI_CARD_1_NAME: str
+
+    ICICI_CARD_2_NUMBER: str
+    ICICI_CARD_2_NAME: str
+
+    KOTAK_CARD_1_NUMBER: str
+    KOTAK_CARD_1_NAME: str
+
+    HDFC_CARD_1_NUMBER: str
+    HDFC_CARD_1_NAME: str
+
+    STANDARD_CHARTERED_CARD_1_NUMBER: str
+    STANDARD_CHARTERED_CARD_1_NAME: str
+
     model_config = SettingsConfigDict()
 
 

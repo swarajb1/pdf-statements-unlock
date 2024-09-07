@@ -30,6 +30,10 @@ def main():
             )
 
             # move and rename the original file
+            # os.makedirs(new_folder / "original", exist_ok=True)
+
+            # os.rename(source_pdf_path, new_folder / "original" / file_name)
+
             os.rename(source_pdf_path, new_folder / file_name)
 
 

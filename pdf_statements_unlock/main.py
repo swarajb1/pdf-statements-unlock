@@ -1,4 +1,5 @@
 import os
+import shutil
 from pathlib import Path
 
 import PyPDF2
@@ -8,20 +9,22 @@ from file_match import get_pdf_password
 def main():
     # find all statements in folder, create separate folder for each bank statement, and for rename the file, and store it in separate folder
 
+    month_year: str = input("Enter the month and year for the statements (e.g. 2021-06): ")
+
     source_folder: Path = Path("./private_data/credit_cards")
 
     for file_name in os.listdir(source_folder):
         if (file_name.endswith(".pdf") or file_name.endswith(".PDF")) and os.path.isfile(source_folder / file_name):
             source_pdf_path: Path = source_folder / file_name
-            bank, pdf_password = get_pdf_password(file_name)
+            bank, pdf_password, card = get_pdf_password(file_name)
 
-            new_folder = source_folder / (bank.name + "_free")
+            new_file_name_name = f"{card.number}_{card.name.title()}_{month_year}"
+
+            new_folder = source_folder / bank.value
 
             os.makedirs(new_folder, exist_ok=True)
 
-            file_name_name, file_extension = os.path.splitext(file_name)
-
-            destination_pdf_path: Path = new_folder / (file_name_name + "_free.pdf")
+            destination_pdf_path: Path = new_folder / (new_file_name_name + "_unlocked.pdf")
 
             unlock_pdf(
                 source_pdf_path=source_pdf_path,
@@ -30,7 +33,10 @@ def main():
             )
 
             # move and rename the original file
-            os.rename(source_pdf_path, new_folder / file_name)
+            os.makedirs(new_folder / "original", exist_ok=True)
+            os.rename(source_pdf_path, new_folder / "original" / (new_file_name_name + ".pdf"))
+
+            shutil.copy(destination_pdf_path, source_folder / (new_file_name_name + "_unlocked.pdf"))
 
 
 def unlock_pdf(source_pdf_path: Path, destination_pdf_path: Path, pdf_password: str):

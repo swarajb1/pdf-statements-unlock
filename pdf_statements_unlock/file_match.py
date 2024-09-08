@@ -1,8 +1,8 @@
-from database.card_management import card_matrix
+from database.card_management import CardData, card_matrix
 from database.enums import BankCreditCards
 
 
-def get_pdf_password(file_name: str) -> tuple[BankCreditCards, str]:
+def get_pdf_password(file_name: str) -> tuple[BankCreditCards, str, CardData]:
     card_name_prefix: str = ""
 
     for bank in card_matrix:

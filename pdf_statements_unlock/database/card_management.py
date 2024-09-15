@@ -34,7 +34,12 @@ card_matrix: CardMatrix[BankCreditCards] = {
             CardData(
                 number=settings.ICICI_CARD_2_NUMBER,
                 name=settings.ICICI_CARD_2_NAME,
-                file_name_match=["coral"],
+                file_name_match=["xx1005"],
+            ),
+            CardData(
+                number=settings.ICICI_CARD_3_NUMBER,
+                name=settings.ICICI_CARD_3_NAME,
+                file_name_match=["xx6003"],
             ),
         ],
         pdf_password=settings.ICICI_PDF_PASSWORD,

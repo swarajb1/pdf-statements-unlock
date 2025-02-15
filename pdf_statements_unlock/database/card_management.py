@@ -49,7 +49,17 @@ card_matrix: CardMatrix[BankCreditCards] = {
             CardData(
                 number=settings.HDFC_CARD_1_NUMBER,
                 name=settings.HDFC_CARD_1_NAME,
-                file_name_match=["4854xx"],
+                file_name_match=["4341xx"],
+            ),
+            CardData(
+                number=settings.HDFC_CARD_2_NUMBER,
+                name=settings.HDFC_CARD_2_NAME,
+                file_name_match=["5268xx"],
+            ),
+            CardData(
+                number=settings.HDFC_CARD_3_NUMBER,
+                name=settings.HDFC_CARD_3_NAME,
+                file_name_match=["4023xx"],
             ),
         ],
         pdf_password=settings.HDFC_PDF_PASSWORD,
@@ -69,9 +79,19 @@ card_matrix: CardMatrix[BankCreditCards] = {
             CardData(
                 number=settings.STANDARD_CHARTERED_CARD_1_NUMBER,
                 name=settings.STANDARD_CHARTERED_CARD_1_NAME,
-                file_name_match=["eStatement3531"],
+                file_name_match=["eStatement3531", "STANCHART"],
             ),
         ],
         pdf_password=settings.STANDARD_CHARTERED_PDF_PASSWORD,
+    ),
+    BankCreditCards.INDUSIND_BANK: CardMatrix(
+        cards=[
+            CardData(
+                number=settings.INDUSIND_CARD_1_NUMBER,
+                name=settings.INDUSIND_CARD_1_NAME,
+                file_name_match=["--"],
+            ),
+        ],
+        pdf_password=settings.INDUSIND_PDF_PASSWORD,
     ),
 }

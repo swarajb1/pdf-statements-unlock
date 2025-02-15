@@ -38,6 +38,8 @@ class GlobalConfig(BaseSettings):
 
     STANDARD_CHARTERED_PDF_PASSWORD: str
 
+    INDUSIND_PDF_PASSWORD: str
+
     ICICI_CARD_1_NUMBER: str
     ICICI_CARD_1_NAME: str
 
@@ -53,8 +55,17 @@ class GlobalConfig(BaseSettings):
     HDFC_CARD_1_NUMBER: str
     HDFC_CARD_1_NAME: str
 
+    HDFC_CARD_2_NUMBER: str
+    HDFC_CARD_2_NAME: str
+
+    HDFC_CARD_3_NUMBER: str
+    HDFC_CARD_3_NAME: str
+
     STANDARD_CHARTERED_CARD_1_NUMBER: str
     STANDARD_CHARTERED_CARD_1_NAME: str
+
+    INDUSIND_CARD_1_NUMBER: str
+    INDUSIND_CARD_1_NAME: str
 
     model_config = SettingsConfigDict()
 
@@ -87,6 +98,8 @@ class FactoryConfig:
         return config.model_validate({})
 
 
-settings: GlobalConfig = FactoryConfig(config("FLAVOUR", default=EnvFlavour.dev, cast=EnvFlavour))()
+settings: GlobalConfig = FactoryConfig(
+    config("FLAVOUR", default=EnvFlavour.dev, cast=EnvFlavour)
+)()
 
 __all__ = ["settings"]

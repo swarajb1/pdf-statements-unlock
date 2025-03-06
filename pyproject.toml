@@ -9,6 +9,10 @@ readme = "README.md"
 python = "^3.11"
 pypdf2 = "^3.0.1"
 pycryptodome = "^3.20.0"
+python-dotenv = "^1.0.1"
+pydantic = "^2.9.0"
+pydantic-settings = "^2.4.0"
+starlette = "^0.38.4"
 
 
 [build-system]

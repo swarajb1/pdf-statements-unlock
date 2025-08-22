@@ -95,7 +95,7 @@ def unlock_pdf(source_pdf_path: Path, destination_pdf_path: Path, pdf_password: 
             # Iterate through all the pages and add them to the writer object
             for page_num in range(len(pdf_reader.pages)):
                 page = pdf_reader.pages[page_num]
-                pdf_writer.add_page(page)  # THIS WAS MISSING!
+                pdf_writer.add_page(page)
         except PdfReadError as e:
             raise ValueError(f"Failed to read pages from PDF file: {source_pdf_path}. Error: {e}")
 

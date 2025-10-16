@@ -11,3 +11,4 @@ class BankCreditCards(StateEnum, Enum):
     KOTAK_BANK = "Kotak Bank"
     STANDARD_CHARTERED_BANK = "Standard Chartered Bank"
     INDUSIND_BANK = "IndusInd Bank"
+    FEDERAL_BANK = "Federal Bank"

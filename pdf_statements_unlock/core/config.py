@@ -40,6 +40,8 @@ class GlobalConfig(BaseSettings):
 
     INDUSIND_PDF_PASSWORD: str
 
+    FEDERAL_PDF_PASSWORD: str
+
     ICICI_CARD_1_NUMBER: str
     ICICI_CARD_1_NAME: str
 
@@ -66,6 +68,12 @@ class GlobalConfig(BaseSettings):
 
     INDUSIND_CARD_1_NUMBER: str
     INDUSIND_CARD_1_NAME: str
+
+    FEDERAL_BANK_CARD_1_NUMBER: str
+    FEDERAL_BANK_CARD_1_NAME: str
+
+    FEDERAL_BANK_CARD_2_NUMBER: str
+    FEDERAL_BANK_CARD_2_NAME: str
 
     model_config = SettingsConfigDict()
 
@@ -99,7 +107,7 @@ class FactoryConfig:
 
 
 settings: GlobalConfig = FactoryConfig(
-    config("FLAVOUR", default=EnvFlavour.dev, cast=EnvFlavour)
+    config("FLAVOUR", default=EnvFlavour.dev, cast=EnvFlavour),
 )()
 
 __all__ = ["settings"]

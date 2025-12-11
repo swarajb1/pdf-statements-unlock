@@ -49,6 +49,9 @@ class GlobalConfig(BaseSettings):
     ICICI_CARD_3_NUMBER: str
     ICICI_CARD_3_NAME: str
 
+    ICICI_CARD_4_NUMBER: str
+    ICICI_CARD_4_NAME: str
+
     KOTAK_CARD_1_NUMBER: str
     KOTAK_CARD_1_NAME: str
 

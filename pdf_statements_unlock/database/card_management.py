@@ -90,15 +90,5 @@ card_matrix: CardMatrix[BankCreditCards] = CardMatrix(
             ],
             pdf_password=settings.STANDARD_CHARTERED_PDF_PASSWORD,
         ),
-        # BankCreditCards.INDUSIND_BANK: StateData(
-        #     cards=[
-        #         CardData(
-        #             number=settings.INDUSIND_CARD_1_NUMBER,
-        #             name=settings.INDUSIND_CARD_1_NAME,
-        #             file_name_match=["--"],
-        #         ),
-        #     ],
-        #     pdf_password=settings.INDUSIND_PDF_PASSWORD,
-        # ),
     }
 )

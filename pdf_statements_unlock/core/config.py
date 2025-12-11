@@ -38,8 +38,6 @@ class GlobalConfig(BaseSettings):
 
     STANDARD_CHARTERED_PDF_PASSWORD: str
 
-    INDUSIND_PDF_PASSWORD: str
-
     ICICI_CARD_1_NUMBER: str
     ICICI_CARD_1_NAME: str
 
@@ -48,6 +46,9 @@ class GlobalConfig(BaseSettings):
 
     ICICI_CARD_3_NUMBER: str
     ICICI_CARD_3_NAME: str
+
+    ICICI_CARD_4_NUMBER: str
+    ICICI_CARD_4_NAME: str
 
     KOTAK_CARD_1_NUMBER: str
     KOTAK_CARD_1_NAME: str
@@ -63,9 +64,6 @@ class GlobalConfig(BaseSettings):
 
     STANDARD_CHARTERED_CARD_1_NUMBER: str
     STANDARD_CHARTERED_CARD_1_NAME: str
-
-    INDUSIND_CARD_1_NUMBER: str
-    INDUSIND_CARD_1_NAME: str
 
     model_config = SettingsConfigDict()
 

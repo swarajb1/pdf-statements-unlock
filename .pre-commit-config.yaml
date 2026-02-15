@@ -1,41 +1,6 @@
+# .pre-commit-config.yaml
 repos:
-    - repo: https://github.com/asottile/pyupgrade
-      rev: v3.15.0
-      hooks:
-          - id: pyupgrade
-    - repo: https://github.com/sondrelg/pep585-upgrade
-      rev: v1.0
-      hooks:
-          - id: upgrade-type-hints
-    - repo: https://github.com/asottile/add-trailing-comma
-      rev: v3.1.0
-      hooks:
-          - id: add-trailing-comma
-    - repo: https://github.com/psf/black
-      rev: 23.7.0
-      hooks:
-          - id: black
-            args: ["-l", "119"]
-            verbose: true
-    - repo: https://github.com/PyCQA/autoflake
-      rev: v2.3.1
-      hooks:
-          - id: autoflake
-            args:
-                [
-                    "-r",
-                    "-i",
-                    "--remove-all-unused-imports",
-                    "--remove-unused-variables",
-                ]
-            verbose: true
-    - repo: https://github.com/pycqa/isort
-      rev: 6.0.1
-      hooks:
-          - id: isort
-            name: isort (python)
-            args: ["--profile", "black"]
-            verbose: true
+    # General hooks (whitespace, end-of-file, etc.) - often run first
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v6.0.0
       hooks:
@@ -56,25 +21,19 @@ repos:
           - id: requirements-txt-fixer
           - id: trailing-whitespace
             args: ["--markdown-linebreak-ext=md"]
-    - repo: https://github.com/PyCQA/docformatter
-      rev: v1.7.7
-      hooks:
-          - id: docformatter
-    # - repo: https://github.com/igorshubovych/markdownlint-cli
-    #   rev: v0.41.0
-    #   hooks:
-    #       - id: markdownlint
-    #         # args: ['--fix']
-    #         args: ["--fix", ".markdownlint.json"]
+          - id: detect-private-key
+            verbose: true
 
-    # - repo: https://github.com/pre-commit/pre-commit-hooks
-    #   rev: v4.6.0
-    #   hooks:
-    #     - id: check-xml
-    #     - id: pretty-format-json
-    #       args: ['--autofix']
-    # - repo: https://github.com/prettier/prettier
-    #   rev: 3.3.2
-    #   hooks:
-    #     - id: prettier
-    #       args: ['--write', '**/*.{js,jsx,ts,tsx,json,css,md}']
+    # Python linting
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.9.4
+      hooks:
+          # Run the linter.
+          - id: ruff
+
+    - repo: https://github.com/igorshubovych/markdownlint-cli
+      rev: v0.41.0
+      hooks:
+          - id: markdownlint
+            # args: ['--fix']
+            args: ["--fix", ".markdownlint.json"]

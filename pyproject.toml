@@ -7,7 +7,7 @@ readme = "README.md"
 
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 pypdf = "^4.0.0"
 pycryptodome = "^3.20.0"
 python-dotenv = "^1.0.1"

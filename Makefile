@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+.PHONY: install run run_sh unlock_files clean create_private_folders generate_dot_env
+
 PYTHON=$(shell which python3)
 ifeq ($(PYTHON),)
 	PYTHON=$(shell which python)
@@ -26,6 +28,13 @@ install:  ## Install poetry to run on local
 run: ## run the program
 	clear
 	PYTHONPATH=$(WORKDIR)/ $(PYTHON) pdf_statements_unlock/main.py
+
+run_sh: ## run the program via the shell wrapper (keeps terminal open)
+	bash run.sh
+
+unlock_files: ## batch-unlock all PDFs in private_data/files
+	clear
+	$(PYTHON) scripts/unlock_files.py
 
 clean:
 	rm -rf __pycache__

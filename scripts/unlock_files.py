@@ -1,9 +1,68 @@
 import getpass
 import os
+import sys
 from pathlib import Path
 
 from pypdf import PdfReader, PdfWriter
 from pypdf.errors import PdfReadError
+
+
+def masked_input(prompt: str, mask: str = "*") -> str:
+    """Read a line from the terminal, echoing `mask` for each typed character."""
+
+    if not sys.stdin.isatty():
+        return getpass.getpass(prompt)
+
+    sys.stdout.write(prompt)
+    sys.stdout.flush()
+
+    if sys.platform == "win32":
+        import msvcrt
+
+        read_char = msvcrt.getwch
+        restore = None
+    else:
+        import termios
+        import tty
+
+        fd = sys.stdin.fileno()
+        saved_attrs = termios.tcgetattr(fd)
+        tty.setraw(fd)
+
+        def read_char():
+            return sys.stdin.read(1)
+
+        def restore():
+            termios.tcsetattr(fd, termios.TCSADRAIN, saved_attrs)
+
+    typed: list[str] = []
+    try:
+        while True:
+            char = read_char()
+
+            if char in ("\r", "\n"):
+                break
+            if char in ("\x7f", "\b"):
+                if typed:
+                    typed.pop()
+                    sys.stdout.write("\b \b")
+            elif char == "\x03":
+                raise KeyboardInterrupt
+            elif char == "\x04":
+                if not typed:
+                    break
+            else:
+                typed.append(char)
+                sys.stdout.write(mask)
+
+            sys.stdout.flush()
+    finally:
+        if restore:
+            restore()
+        sys.stdout.write("\n")
+        sys.stdout.flush()
+
+    return "".join(typed)
 
 
 def main():
@@ -17,7 +76,7 @@ def main():
         print(f"❌ Source folder not found: {source_folder}")
         return
 
-    pdf_password: str = getpass.getpass("Enter the PDF unlock password: ")
+    pdf_password: str = masked_input("Enter the PDF unlock password: ")
 
     dest_folder.mkdir(parents=True, exist_ok=True)
 
